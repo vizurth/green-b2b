@@ -29,10 +29,10 @@ flowchart TD
     Gateway --> Content[Content/Case Service]
     Gateway --> Admin[Admin Service]
 
-    RAG --> Qdrant[Vector Store (Qdrant)]
-    RAG --> LLM[OpenAI LLM API]
+    RAG --> Qdrant[Vector Store]
+    RAG --> LLM[LLM API (OpenAI)]
 
-    Orders -->|publish events| NATS[(NATS JetStream)]
+    Orders -->|publish events| NATS[NATS JetStream]
     Catalog -->|publish events| NATS
     CustomReq -->|publish events| NATS
 
@@ -59,7 +59,8 @@ flowchart TD
     Auth --> Postgres
 
     RAG --> Qdrant
-    AllServices -.-> Redis
+    Catalog -. cache .-> Redis
+    Orders -. cache .-> Redis
 ```
 
 ---
