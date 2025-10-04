@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "eventify/auth/api;authpb";
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Auth Service API"
+    version: "1.0"
+    description: "Authentication service for users"
+  };
+	host: "localhost:9097";
+  schemes: HTTP;
+  consumes: "application/json";
+  produces: "application/json";
+};
+
+service AuthService {
+	rpc Register (RegisterRequest) returns (RegisterResponse) {
+		option (google.api.http) = {
+			post: "/auth/register"
+			body: "*"
+		};
+	}
+
+	rpc Login (LoginRequest) returns (LoginResponse) {
+		option (google.api.http) = {
+			post: "/auth/login"
+			body: "*"
+		};
+	}
+	rpc Refresh (RefreshRequest) returns (LoginResponse) {
+		option (google.api.http) = {
+			post: "/auth/refresh"
+			body: "*"
+		};
+	};
+	rpc Logout (RefreshRequest) returns (LogoutResponse) {
+		option (google.api.http) = {
+			post: "/auth/logout"
+			body: "*"
+		};
+	};
+}
+
+message RegisterRequest {
+	string username = 1;
+	string email = 2;
+	string password = 3;
+	string role = 4;
+}
+
+message RegisterResponse {
+	string message = 1;
+}
+
+message LoginRequest {
+	string username = 1; // либо username
+	string email = 2;    // либо email
+	string password = 3;
+}
+
+message LoginResponse {
+	string access_token = 1;
+	string refresh_token = 2;
+}
+
+message RefreshRequest {
+	string refresh_token = 1;
+}
+
+message  LogoutResponse {
+	string message = 1;
+}
