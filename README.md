@@ -30,7 +30,7 @@ flowchart TD
     Gateway --> Admin[Admin Service]
 
     RAG --> Qdrant[Vector Store]
-    RAG --> LLM[LLM API (OpenAI)]
+    RAG --> LLM[LLM API]
 
     Orders -->|publish events| NATS[NATS JetStream]
     Catalog -->|publish events| NATS
