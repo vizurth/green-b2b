@@ -1,4 +1,4 @@
-# Green — Backend Architecture (MVP)
+# Green — Backend Architecture (MVP) gitlab
 
 Green — B2B-платформа для автоматизации бизнес-процессов. Эта архитектура описывает микросервисный backend на Go, оптимизированный под быстрый запуск MVP (6–8 недель) и последующую масштабируемость.
 
