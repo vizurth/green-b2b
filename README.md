@@ -24,7 +24,6 @@ flowchart TD
     Gateway --> Auth[Auth Service]
     Gateway --> Catalog[Catalog Service]
     Gateway --> Orders[Order Service]
-    Gateway --> CustomReq[Custom Request Service]
     Gateway --> RAG[RAG Service]
     Gateway --> Content[Content/Case Service]
     Gateway --> Admin[Admin Service]
