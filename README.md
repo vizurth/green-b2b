@@ -33,7 +33,6 @@ flowchart TD
 
     Orders -->|publish events| NATS[NATS JetStream]
     Catalog -->|publish events| NATS
-    CustomReq -->|publish events| NATS
 
     NATS --> Notify[Notification Service]
     NATS --> Analytics[Analytics Service]
@@ -53,7 +52,6 @@ flowchart TD
 
     Catalog --> Postgres
     Orders --> Postgres
-    CustomReq --> Postgres
     Content --> Postgres
     Auth --> Postgres
 
